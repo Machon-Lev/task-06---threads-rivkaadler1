@@ -16,16 +16,16 @@ void Consumer::operator() () {
             _lockers._cond_global_queue.wait(lck, []() {return !messages.empty(); });
             Message message = _global_queue.front();
             _global_queue.pop();
-            if (message.isLast)
+            if (message._isLast)
             {
                 lock_guard<mutex> lck_cout(_lockers._mtx_cout);
-                std::cout << message.id << " finished" << std::endl;
+                std::cout << message._id << " finished" << std::endl;
                 terminationCount++;
             }
             else
             {
                 lock_guard<mutex> lck_cout(_lockers._mtx_cout);
-                std::cout << message.id << " :sent " << message.value << std::endl;
+                std::cout << message._id << " :sent " << message._value << std::endl;
             }
             if (terminationCount == 2)
             {

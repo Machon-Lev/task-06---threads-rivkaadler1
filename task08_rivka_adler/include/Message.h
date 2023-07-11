@@ -7,7 +7,7 @@
  */
 struct Message
 {
-    double id=0.0;
-    double value=9;
-    bool isLast=false;
+    double _id = 0.0;
+    double _value = 0.0;
+    bool _isLast = false;
 };

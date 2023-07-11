@@ -13,12 +13,12 @@ void Producer::operator() () {
         double id = static_cast<double>(std::hash<std::thread::id>{}(std::this_thread::get_id()));
         double value = id;
         Message message{};
-        while (!message.isLast)
+        while (!message._isLast)
         {
             {
-                message.id = id;
-                message.value = value;
-                message.isLast = value==0.0?true:false;
+                message._id = id;
+                message._value = value;
+                message._isLast = value ==0.0? true: false;
                 lock_guard<mutex> lck_names(_lockers._mtx_global_queue);
                 _global_queue.push(message);
                 _lockers._cond_global_queue.notify_all();
