@@ -1,0 +1,1 @@
+﻿target_include_directories (task08_rivka_adler PRIVATE ${CMAKE_CURRENT_LIST_DIR})
