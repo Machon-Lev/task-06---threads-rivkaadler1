@@ -18,13 +18,11 @@ void Consumer::operator() () {
             _global_queue.pop();
             if (message._isLast)
             {
-                lock_guard<mutex> lck_cout(_lockers._mtx_cout);
                 std::cout << message._id << " finished" << std::endl;
                 terminationCount++;
             }
             else
             {
-                lock_guard<mutex> lck_cout(_lockers._mtx_cout);
                 std::cout << message._id << " :sent " << message._value << std::endl;
             }
             if (terminationCount == 2)

@@ -16,7 +16,6 @@ extern std::atomic<int> terminationCount;              // Atomic counter for ter
 
 class Lockers {
 public:
-	static mutex _mtx_cout;          // Mutex for synchronization output
 	static mutex _mtx_global_queue;      //Mutex for signaling messages input\output
 	static condition_variable _cond_global_queue; // Condition variable for signaling messages availability
 };
